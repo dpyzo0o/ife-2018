@@ -7,6 +7,10 @@ h2, h3, .bold {
   font-weight: bold;
 }
 
+section {
+  margin: 30px 0;
+}
+
 .info {
   display: flex;
   justify-content: space-between;
