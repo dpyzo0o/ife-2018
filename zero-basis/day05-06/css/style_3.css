@@ -1,0 +1,62 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+body > header {
+  height: 10vh;
+  background: #686568;
+  color: white;
+  display: flex;
+}
+
+body header h1 {
+  text-align: center;
+  margin: 0;
+  line-height: 10vh;
+  flex: 1;
+}
+
+body header div {
+  flex: 6;
+}
+
+p {
+  display: inline;
+}
+
+section {
+  display: flex;
+  height: 18vh;
+  border-bottom: 1px solid white;
+}
+
+section header {
+  flex: 1;
+  background: #c2c0c2;
+  text-align: center;
+}
+
+section header h2 {
+  margin: 0;
+  line-height: 18vh;
+}
+
+section .desc {
+  flex: 6;
+  padding: 1em 0 0 1em;
+  border-top: 1px solid #c2c0c2;
+}
+
+div.content {
+  border-bottom: 1px solid #c2c0c2;
+}
+
+.info > div > strong:not(:first-child) {
+  margin-left: 1.5em;
+}
+
+.contact > div > strong:not(:first-child) {
+  margin-left: 1.5em;
+}
