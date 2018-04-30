@@ -4,10 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet" href="css/style_3.css">
+  <link id="myStyle" rel="stylesheet" href="css/style_3.css">
+  <style>
+    #styles {
+      position: fixed;
+      right: 2em;
+      bottom: 2em;
+    }
+  </style>
 </head>
 
 <body>
+
+  <select name="styles" id="styles" onchange="switchStyle()">
+    <option value="style_1">Style 1</option>
+    <option value="style_2">Style 2</option>
+    <option value="style_3" selected>Style 3</option>
+  </select>
 
   <header>
     <h1>简历</h1>
@@ -87,6 +100,14 @@
       </div>
     </section>
   </div>
+
+  <script>
+    function switchStyle() {
+      var selectedValue = document.getElementById('styles').value;
+      var stylesheet = document.getElementById('myStyle');
+      stylesheet.href = 'css/' + selectedValue + '.css';
+    }
+  </script>
 
 </body>
 
