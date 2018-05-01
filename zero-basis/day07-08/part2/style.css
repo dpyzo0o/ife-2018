@@ -84,12 +84,14 @@ nav button {
   margin-top: 1rem;
   height: 3rem;
   padding: 0 1.5rem;
+  border: 1px solid #ccc;
   border-radius: 0.8rem 0.8rem 0 0;
   cursor: pointer;
 }
 
 nav button.active {
   border-bottom: none;
+  background: white;
 }
 
 nav button:not(.active) {
