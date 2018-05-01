@@ -1,0 +1,139 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+
+header {
+  background: #2e2e2e;
+  color: #fff;
+  height: 4rem;
+}
+
+.container {
+  width: 960px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  line-height: 4rem;
+}
+
+header nav {
+  float: right;
+  border: none;
+  padding-top: 0.2rem;
+}
+
+header a {
+  color: #fff;
+  font-size: 0.9rem;
+  margin-left: 0.2rem;
+}
+
+header a:hover {
+  color: #ccc;
+}
+
+.banner {
+  background: #4fcc15;
+  height: 15rem;
+}
+
+.banner .container {
+  position: relative;
+}
+
+.banner ul {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.banner li {
+  display: inline-block;
+  cursor: pointer;
+  background: rgba(250, 250, 250, 0.8);
+  padding: 0.3rem 0.4rem;
+  border: 1px solid #aaa;
+}
+
+.banner li:hover {
+  background: rgb(250, 250, 250, 0.5);
+}
+
+.banner li.active {
+  padding: 1.2rem 0.4rem 0.3rem 0.4rem;
+  background: rgb(250, 250, 250);
+}
+
+nav {
+  height: 4rem;
+  border-bottom: 1px solid #ccc;
+}
+
+nav button {
+  float: left;
+  font-size: 1rem;
+  margin-top: 1rem;
+  height: 3rem;
+  padding: 0 1.5rem;
+  border-radius: 0.8rem 0.8rem 0 0;
+  cursor: pointer;
+}
+
+nav button.active {
+  border-bottom: none;
+}
+
+nav button:not(.active) {
+  background: #ddd;
+}
+
+nav button:not(.active):hover {
+  background: #ccc;
+}
+
+main .container {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0 10px 0;
+}
+
+main .row {
+  display: flex;
+  flex: 1;
+  margin: 5px 0;
+}
+
+main .row div {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 80px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+main .row div:first-child {
+  margin-left: 0;
+}
+
+main .row div:last-child {
+  margin-right: 0;
+}
+
+footer {
+  background: #747474;
+  color: #fff;
+  width: 100%;
+  height: 7rem;
+  text-align: center;
+  padding-top: 0.2rem;
+  font-size: 0.9rem;
+}
