@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>常见两栏三栏布局</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0 8px;
+      padding-bottom: 8px;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      margin-top: 0;
+      padding-top: 1em;
+      text-align: center;
+      color: lightsalmon;
+    }
+
+    .control {
+      text-align: center;
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      flex: 1;
+      border: 4px dashed lightseagreen;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>常见两栏三栏布局</h2>
+
+    <div class="control">
+      <select name="layout" id="layout" onchange="setLayout()">
+        <option value="1" selected>两栏，左30%，右70%</option>
+        <option value="2">两栏，左固定，右自适应</option>
+        <option value="3">两栏，右固定，左自适应</option>
+        <option value="4">三栏，左右固定，中间自适应</option>
+        <option value="5">三栏，左中固定，右自适应</option>
+      </select>
+      <select name="method" id="method" onchange="setMethod()">
+        <option value="float" selected>Float</option>
+        <option value="position">Position</option>
+        <option value="flex">Flexbox</option>
+      </select>
+    </div>
+
+    <iframe id="myIframe" src="./1-float.html" frameborder="0"></iframe>
+
+    <script>
+      var iframe = document.getElementById('myIframe');
+      var num = '1';
+      var method = 'float';
+
+      function setLayout() {
+        let selectedValue = document.getElementById('layout').value;
+        num = selectedValue;
+        update();
+      }
+
+      function setMethod() {
+        let selectedValue = document.getElementById('method').value;
+        method = selectedValue;
+        update();
+      }
+
+      function update() {
+        let url = './' + num + '-' + method + '.html';
+        iframe.setAttribute('src', url);
+      }
+    </script>
+
+</body>
+
+</html>
