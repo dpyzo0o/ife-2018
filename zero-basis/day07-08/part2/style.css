@@ -104,22 +104,18 @@ nav button:not(.active):hover {
 
 main .container {
   display: flex;
-  display: -ms-flexbox;
   flex-direction: column;
   padding: 5px 0 10px 0;
 }
 
 main .row {
   display: flex;
-  display: -ms-flexbox;
   flex: 1;
-  -ms-flex: 1;
   margin: 5px 0;
 }
 
 main .row div {
   flex: 1;
-  -ms-flex: 1;
   border: 1px solid #ccc;
   padding: 80px;
   text-align: center;
