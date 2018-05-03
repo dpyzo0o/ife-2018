@@ -30,11 +30,16 @@ body {
 }
 
 .cube > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   width: 300px;
   height: 300px;
   border: 3px solid rgba(0, 102, 255, 1);
+  font-size: 3em;
   background: rgba(0, 102, 255, 0.5);
+  color: white;
 }
 
 .front {
