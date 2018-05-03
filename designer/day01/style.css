@@ -5,7 +5,7 @@ body {
 
 p {
   display: inline-block;
-  transition: color .5s ease;
+  transition: color .5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 /* bottom line */
@@ -19,10 +19,10 @@ p::after {
   -moz-transform: scaleX(0);
   -ms-transform: scaleX(0);
   -o-transform: scaleX(0);
-  transition: transform .3s ease;
-  -webkit-transition: transform .3s ease;
-  -moz-transition: transform .3s ease;
-  -o-transition: transform .3s ease;
+  transition: transform .3s cubic-bezier(0.77, 0, 0.175, 1);
+  -webkit-transition: transform .3s cubic-bezier(0.77, 0, 0.175, 1);
+  -moz-transition: transform .3s cubic-bezier(0.77, 0, 0.175, 1);
+  -o-transition: transform .3s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 p.underline {
