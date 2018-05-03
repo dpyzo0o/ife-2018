@@ -1,0 +1,61 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+div {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 100px;
+  background: #eee;
+}
+
+.box1 {
+  transform: skew(30deg);
+  -webkit-transform: skew(30deg);
+  -moz-transform: skew(30deg);
+  -ms-transform: skew(30deg);
+  -o-transform: skew(30deg);
+}
+
+.box2 {
+  transform: scaleX(.5);
+  -webkit-transform: scaleX(.5);
+  -moz-transform: scaleX(.5);
+  -ms-transform: scaleX(.5);
+  -o-transform: scaleX(.5);
+}
+
+.box3 {
+  transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+}
+
+.box4 {
+  transform: translate(10px, 20px);
+  -webkit-transform: translate(10px, 20px);
+  -moz-transform: translate(10px, 20px);
+  -ms-transform: translate(10px, 20px);
+  -o-transform: translate(10px, 20px);
+}
+
+.box5 {
+  transform: matrix(0.57735, 0.5, 0, 0.866025, 10, 20);
+  -webkit-transform: matrix(0.57735, 0.5, 0, 0.866025, 10, 20);
+  -moz-transform: matrix(0.57735, 0.5, 0, 0.866025, 10, 20);
+  -ms-transform: matrix(0.57735, 0.5, 0, 0.866025, 10, 20);
+  -o-transform: matrix(0.57735, 0.5, 0, 0.866025, 10, 20);
+}
