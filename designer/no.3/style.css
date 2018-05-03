@@ -1,0 +1,228 @@
+body {
+  background-color: #d69a44;
+}
+
+/* face */
+.face {
+  position: absolute;
+  left: 50%;
+  margin-left: -175px;
+  top: 40px;
+  width: 350px;
+  height: 250px;
+  border-radius: 50% 50% 30% 30%;
+  border: 2px solid #3f200b;
+  z-index: 10;
+  background: #fbf8f1;
+  overflow: hidden;
+}
+
+/* ear */
+.ear-wrap {
+  position: absolute;
+  left: 50%;
+  width: 300px;
+  margin-left: -150px;
+  margin-top: 20px;
+}
+
+.ear {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  border: 2px solid #000;
+  background: #fbf8f1;
+  border-radius: 100% 10% 50% 0%;
+  transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+}
+
+.ear-wrap .right {
+  left: auto;
+  right: 0;
+  border-radius: 10% 100% 0% 50%;
+  background: #f1ac2b;
+  transform: rotate(5deg);
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+}
+
+/* 头发 */
+.hair {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  left: 50%;
+  margin-left: 50px;
+  margin-top: -40px;
+  background: #f3b32e;
+  border-radius: 50% 50% 50% 50%;
+}
+
+/* 眼睛 */
+.eye-wrap {
+  position: absolute;
+  width: 280px;
+  height: 70px;
+  top: 90px;
+  left: 50%;
+  margin-left: -140px;
+  overflow: hidden;
+}
+
+.eye {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+}
+
+.eye-circle {
+  width: 100px;
+  height: 80px;
+  border: 2px solid #482507;
+  overflow: hidden;
+  position: absolute;
+  background: #fff;
+  border-radius: 50% 50% 40% 40%;
+  box-sizing: border-box;
+}
+
+.eye-core {
+  height: 55px;
+  width: 46px;
+  border-radius: 50% 50% 50% 50%;
+  /* margin: 0 auto; */
+  background: #000;
+  position: absolute;
+  left: 50%;
+  margin-left: -23px;
+}
+
+.eye-bottom {
+  height: 50px;
+  width: 100px;
+  border-radius: 40% 40% 50% 50%;
+  position: absolute;
+  margin-top: 48px;
+  border-top: 2px solid #46240b;
+  background: #f6f7f2;
+}
+
+.eye-wrap .right {
+  left: auto;
+  right: 0px;
+}
+
+.face-red {
+  position: absolute;
+  height: 20px;
+  width: 50px;
+  background: red;
+  top: 50px;
+  left: 50%;
+  margin-left: -25px;
+  border-radius: 50% 50% 50% 50%;
+  background: #e85a5e;
+  opacity: 0;
+}
+
+/* 鼻子 */
+.nose {
+  width: 20px;
+  height: 10px;
+  border-bottom: 8px solid #000;
+  border-radius: 0% 0% 50% 50%;
+  top: 154px;
+  left: 50%;
+  margin-left: -10px;
+  position: absolute;
+}
+
+/* 嘴巴 */
+.mouth-wrap {
+  position: absolute;
+  top: 168px;
+  width: 80px;
+  left: 50%;
+  margin-left: -40px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.mouth {
+  width: 40px;
+  height: 40px;
+  border-bottom: 4px solid #000;
+  border-right: 4px solid #000;
+  border-radius: 0% 40% 50% 20%;
+  margin-top: -26px;
+  position: absolute;
+  left: 0;
+}
+
+.mouth-wrap .right {
+  border-bottom: 4px solid #000;
+  border-right: none;
+  border-left: 4px solid #000;
+  border-radius: 40% 0% 20% 50%;
+  position: absolute;
+  left: auto;
+  right: 0;
+}
+
+.ear,
+.eye-core,
+.eye-bottom,
+.face-red,
+.mouth {
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+}
+
+/*鼠标hover样式*/
+.container:hover .ear.left {
+  transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg);
+  -moz-transform: rotate(-30deg);
+  -ms-transform: rotate(-30deg);
+  -o-transform: rotate(-30deg);
+}
+
+.container:hover .ear.right {
+  transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+}
+
+.container:hover .eye-core {
+  transform: scaleX(0.85);
+  -webkit-transform: scaleX(0.85);
+  -moz-transform: scaleX(0.85);
+  -ms-transform: scaleX(0.85);
+  -o-transform: scaleX(0.85);
+}
+
+.container:hover .eye-bottom {
+  margin-top: 30px;
+}
+
+.container:hover .face-red {
+  opacity: 1;
+}
+
+.container:hover .mouth.left {
+  border-radius: 0% 40% 50% 40%;
+}
+
+.container:hover .mouth.right {
+  border-radius: 40% 0% 40% 50%;
+}
