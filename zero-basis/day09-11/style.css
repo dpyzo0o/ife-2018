@@ -58,8 +58,7 @@ header .desc {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.signup-form .desc,
-.signup-form .password {
+.signup-form .desc {
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -72,6 +71,7 @@ header .signup-form {
   margin-top: 100px;
   padding: 0 100px;
   border: 1px solid rgba(204, 204, 204, 0.4);
+  border-radius: 3px;
 }
 
 .signup-form .header {
@@ -91,7 +91,7 @@ header .signup-form {
   justify-content: space-between;
 }
 
-.input-wrapper > div {
+.input-wrapper > * {
   border-radius: 3px;
   line-height: 50px;
 }
@@ -100,8 +100,12 @@ header .signup-form {
 .signup-form .password {
   width: 292px;
   height: 50px;
+  padding-left: 20px;
   border: 1px solid rgba(204, 204, 204, 0.4);
   font-size: 14px;
+  text-align: left;
+  background: none;
+  color: #fff;
 }
 
 .signup-form .btn {
@@ -445,13 +449,12 @@ header .signup-form {
   font-weight: bold;
 }
 
-.contact .form > div:not(:first-child) {
+.contact .form > *:not(:first-child) {
   margin: 30px auto 0;
   border-radius: 3px;
 }
 
-.contact .email,
-.contact .subject {
+.contact input {
   width: 370px;
   height: 50px;
   border: 1px solid rgba(204, 204, 204, 0.4);
@@ -462,7 +465,7 @@ header .signup-form {
   color: rgba(0, 0, 0, 0.6);
 }
 
-.contact .message {
+.contact textarea {
   width: 370px;
   height: 144px;
   border: 1px solid rgba(204, 204, 204, 0.4);
