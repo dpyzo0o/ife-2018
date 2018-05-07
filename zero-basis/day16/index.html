@@ -125,7 +125,9 @@
   </section>
 
   <script>
-    document.getElementsByTagName("img")[0].onclick = function () {
+    document.getElementsByTagName("img")[0].addEventListener("click", sayHello);
+    
+    function sayHello () {
       var name = prompt("What's your name?");
       alert("Hello " + name + ", nice to meet you!\nWelcome to my website!");
     }
