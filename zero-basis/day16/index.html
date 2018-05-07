@@ -129,6 +129,7 @@
     
     function sayHello () {
       var name = prompt("What's your name?");
+      name = name === null ? "dear friend" : name;
       alert("Hello " + name + ", nice to meet you!\nWelcome to my website!");
     }
   </script>
