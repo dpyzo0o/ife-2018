@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>IFE ECMAScript</title>
+</head>
+
+<body>
+  <input id="first-number" type="number" value="0" placeholder="第一个数字">
+  <input id="second-number" type="number" value="0" placeholder="第二个数字">
+  <button id="add-btn">加</button>
+  <button id="minus-btn">减</button>
+  <button id="times-btn">乘</button>
+  <button id="divide-btn">除</button>
+  <p id="result">运算结果</p>
+
+  <script>
+    var input1 = document.getElementById("first-number");
+    var input2 = document.getElementById("second-number");
+    var result = document.getElementById("result");
+
+    document.getElementById("add-btn").addEventListener("click", function () {
+      result.innerHTML = Number(input1.value) + Number(input2.value);
+    });
+
+    document.getElementById("minus-btn").addEventListener("click", function () {
+      result.innerHTML = Number(input1.value) - Number(input2.value);
+    });
+
+    document.getElementById("times-btn").addEventListener("click", function () {
+      result.innerHTML = Number(input1.value) * Number(input2.value);
+    });
+
+    document.getElementById("divide-btn").addEventListener("click", function () {
+      try {
+        result.innerHTML = Number(input1.value) / Number(input2.value);
+        if (Number(input2.value) === 0) {
+          throw "Divider must not be 0!"
+        }
+      }
+      catch(err) {
+        console.log(err);
+      }
+    });
+  </script>
+</body>
+
+</html>
