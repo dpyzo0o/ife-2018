@@ -33,9 +33,9 @@
     var container = document.getElementById("table");
     var i, j;
 
-    for (i = 1; i < 9; i++) {
+    for (i = 1; i <= 9; i++) {
       var tr = document.createElement("tr");
-      for (j = 1; j < i; j++) {
+      for (j = 1; j <= i; j++) {
         var td = document.createElement("td");
         td.innerHTML = i + " * " + j + " = " + i * j;
         tr.appendChild(td);
