@@ -37,26 +37,17 @@
     <div class="img"></div>
   </div>
 
-  <button id="btn-start">Start</button>
-  <button id="btn-reset">Reset</button>
-
   <script>
     var img = document.getElementsByClassName("img")[0];
-    var i = 1;
-    document.getElementById("btn-start").addEventListener("click", animatePic);
-    document.getElementById("btn-reset").addEventListener("click", function() {
-      i = 1;
-      img.style.backgroundPosition = "0 0";
-    });
-
-    function animatePic() {
-      var add = i * 480;
-      img.style.backgroundPosition = "0px -" + add + "px";
-      i++;
-      if (i < 17) {
-        setTimeout(animatePic, 200);
+    var flag = 1,
+      offsetY = 0;
+    setInterval(function () {
+      offsetY += flag * 480;
+      img.style.backgroundPosition = "0 -" + offsetY + "px";
+      if (offsetY >= 7680 || offsetY <= 0) {
+        flag = -flag;
       }
-    }
+    }, 100);
   </script>
 
 </body>
