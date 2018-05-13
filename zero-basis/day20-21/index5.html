@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    button {
+      margin-top: 50px;
+    }
+
+    .wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 480px;
+      height: 480px;
+      margin: -240px 0 0 -240px;
+    }
+
+    .img {
+      width: 480px;
+      height: 480px;
+      background: url("./erik.jpg");
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="img"></div>
+  </div>
+
+  <button id="btn-start">Start</button>
+  <button id="btn-reset">Reset</button>
+
+  <script>
+    var img = document.getElementsByClassName("img")[0];
+    var i = 1;
+    document.getElementById("btn-start").addEventListener("click", animatePic);
+    document.getElementById("btn-reset").addEventListener("click", function() {
+      i = 1;
+      img.style.backgroundPosition = "0 0";
+    });
+
+    function animatePic() {
+      var add = i * 480;
+      img.style.backgroundPosition = "0px -" + add + "px";
+      i++;
+      if (i < 17) {
+        setTimeout(animatePic, 200);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

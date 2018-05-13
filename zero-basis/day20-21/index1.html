@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <input id="name" type="text">
+  <button id="submit-btn">Submit</button>
+
+  <script>
+    var input = document.getElementById("name");
+    var btn = document.getElementById("submit-btn");
+
+    btn.addEventListener("click", function() {
+      console.log(input.value);
+      input.value = "";
+    });
+
+    input.addEventListener("keyup", function(evt) {
+      if (evt.keyCode === 13) {
+        console.log(input.value);
+        input.value = "";
+      } else if (evt.keyCode === 27) {
+        input.value = "";
+      }
+    });
+  </script>
+
+</body>
+
+</html>

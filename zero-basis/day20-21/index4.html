@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #fade-obj {
+      transition: opacity 5s ease;
+    }
+
+    .transparent {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+  <button id="fade-btn">淡出</button>
+
+  <script>
+    var obj = document.getElementById("fade-obj");
+    var btn = document.getElementById("fade-btn");
+
+    btn.addEventListener("click", function() {
+      obj.classList.toggle("transparent");
+      btn.disabled = true;
+      setTimeout(function() {
+        btn.disabled = false;
+        btn.innerHTML = btn.innerHTML === "淡入" ? "淡出" : "淡入";
+      }, 5000);
+    });
+  </script>
+
+</body>
+
+</html>
