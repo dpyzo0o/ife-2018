@@ -122,6 +122,7 @@ displayTimeDiff();
 selectWrapper.addEventListener("change", function(evt) {
   if (evt.target.id === "year-select" || evt.target.id === "month-select") {
     setDaySelect(
+      // day set to 0 will return last day of last month
       new Date(parseInt(yearSelect.value), parseInt(monthSelect.value), 0)
     );
   }
