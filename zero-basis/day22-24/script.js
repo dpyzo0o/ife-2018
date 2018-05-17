@@ -461,4 +461,21 @@ function obj2arr(obj) {
   return result;
 }
 
-function arr2obj(arr) {}
+// solution from https://github.com/yeung66/ife-basic/blob/master/basic22-24/sort.html
+function arr2obj(arr) {
+  var obj = { 0: {} };
+
+  for (var i = 0; i < arr.length; i++) {
+    obj[arr[i][0]] = { name: arr[i][1] };
+    if (arr[i][2] === -1) {
+      obj[0][arr[i][0]] = obj[arr[i][0]];
+    } else {
+      if (obj[arr[i][2]]["subMenu"]) {
+        obj[arr[i][2]]["subMenu"][arr[i][0]] = obj[arr[i][0]];
+      } else {
+        obj[arr[i][2]]["subMenu"] = {};
+        obj[arr[i][2]]["subMenu"][arr[i][0]] = obj[arr[i][0]];
+      }
+    }
+  }
+}
