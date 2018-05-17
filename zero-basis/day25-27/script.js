@@ -89,7 +89,8 @@ function formatDate(date, style) {
   var dowEN = dayOfWeek(date, "en");
   var hour = padZero(date.getHours());
   var minute = padZero(date.getMinutes());
-  var second = padZero(date.getSeconds());
+  // minimize round-off error
+  var second = padZero(date.getSeconds() + Math.round(date.getMilliseconds() / 1000));
   var flag = Number(hour) > 12 ? "PM" : "AM";
 
   if (style === "zh") {
@@ -172,12 +173,12 @@ function calcTimeDiff(cur, tar) {
   var dayDiff = Math.floor(diff / oneDay);
   var hourDiff = Math.floor(diff % oneDay / oneHour);
   var minuteDiff = Math.floor(diff % oneDay % oneHour / oneMinute);
-  var secondDiff = Math.floor(diff % oneDay % oneHour % oneMinute / oneSecond);
+  var secondDiff = Math.round(diff % oneDay % oneHour % oneMinute / oneSecond);
 
   return {
-    day: dayDiff,
-    hour: hourDiff,
-    minute: minuteDiff,
-    second: secondDiff
+    day: padZero(dayDiff),
+    hour: padZero(hourDiff),
+    minute: padZero(minuteDiff),
+    second: padZero(secondDiff)
   };
 }
