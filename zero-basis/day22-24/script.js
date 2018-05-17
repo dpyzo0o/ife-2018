@@ -431,7 +431,7 @@ var scoreObject = {
     Music: 88
   }
 };
-obj2arr(scoreObject);
+console.log(obj2arr(scoreObject));
 
 var menuArr = [
   [1, "Area1", -1],
@@ -441,9 +441,10 @@ var menuArr = [
   [5, "Area2-1", 2],
   [6, "Area2-2", 2],
   [7, "Area1-2-3", 4],
-  [8, "Area2-2-1", 6]
+  [8, "Area2-2-1", 6],
+  [9, "Area2-2-2", 6]
 ];
-arr2obj(menuArr);
+console.log(arr2obj(menuArr));
 
 function obj2arr(obj) {
   var result = [];
@@ -478,4 +479,5 @@ function arr2obj(arr) {
       }
     }
   }
+  return obj["0"];
 }
