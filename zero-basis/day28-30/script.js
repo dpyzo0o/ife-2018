@@ -25,7 +25,8 @@ input.addEventListener("input", function(evt) {
     "lightcoral";
 });
 
-sugWrapper.addEventListener("click", function(evt) {
+// blur event is prior to click event, thus use mousedown instead
+sugWrapper.addEventListener("mousedown", function(evt) {
   var t = evt.target;
   input.value = htmlDecode(t.innerHTML);
   setSugStatus(false);
@@ -58,12 +59,9 @@ input.addEventListener("keydown", function(evt) {
   setSugContent(sugList);
 });
 
-// hide suggestion when clicking empty area
-window.addEventListener("click", function(evt) {
-  var t = evt.target;
-  if (t.nodeName === "HTML" || t.nodeName === "BODY") {
-    setSugStatus(false);
-  }
+// hide suggestion when input loses focus
+input.addEventListener("blur", function(evt) {
+  setSugStatus(false);
 });
 
 function getInput(node) {
