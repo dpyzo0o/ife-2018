@@ -21,7 +21,8 @@ input.addEventListener("input", function(evt) {
   // display suggestions
   setSugContent(sugList);
   // set a default color for first suggestion
-  document.querySelector("ul > li:nth-child(1)").style.backgroundColor = "lightcoral";
+  document.querySelector("ul > li:nth-child(1)").style.backgroundColor =
+    "lightcoral";
 });
 
 sugWrapper.addEventListener("click", function(evt) {
@@ -34,20 +35,12 @@ sugWrapper.addEventListener("click", function(evt) {
 input.addEventListener("keydown", function(evt) {
   // key up
   if (evt.keyCode === 38) {
-    if (selectedIndex === 0) {
-      selectedIndex = sugList.length - 1;
-    } else {
-      selectedIndex--;
-    }
+    selectedIndex = selectedIndex ? --selectedIndex : sugList.length - 1;
   }
-  
+
   // key down
   if (evt.keyCode === 40) {
-    if (selectedIndex === sugList.length - 1) {
-      selectedIndex = 0;
-    } else {
-      selectedIndex++;
-    }
+    selectedIndex = selectedIndex === sugList.length - 1 ? 0 : ++selectedIndex;
   }
 
   // key enter
