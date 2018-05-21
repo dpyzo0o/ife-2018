@@ -58,6 +58,14 @@ input.addEventListener("keydown", function(evt) {
   setSugContent(sugList);
 });
 
+// hide suggestion when clicking empty area
+window.addEventListener("click", function(evt) {
+  var t = evt.target;
+  if (t.nodeName === "HTML" || t.nodeName === "BODY") {
+    setSugStatus(false);
+  }
+});
+
 function getInput(node) {
   return node.value.trim();
 }
