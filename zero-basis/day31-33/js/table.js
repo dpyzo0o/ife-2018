@@ -34,17 +34,13 @@ function renderTable() {
     // merge cells
     if (isRegionFirst) {
       if (idx % selected.product.length === 0) {
-        tr.innerHTML = `<td rowspan=${selected.product.length}>${
-          el.region
-        }</td><td>${el.product}</td>`;
+        tr.innerHTML = `<td rowspan=${selected.product.length}>${el.region}</td><td>${el.product}</td>`;
       } else {
         tr.innerHTML = `<td>${el.product}</td>`;
       }
     } else {
       if (idx % selected.region.length === 0) {
-        tr.innerHTML = `<td rowspan=${selected.region.length}>${
-          el.product
-        }</td><td>${el.region}</td>`;
+        tr.innerHTML = `<td rowspan=${selected.region.length}>${el.product}</td><td>${el.region}</td>`;
       } else {
         tr.innerHTML = `<td>${el.region}</td>`;
       }

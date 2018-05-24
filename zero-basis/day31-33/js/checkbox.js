@@ -1,9 +1,3 @@
-const regionWrapper = document.getElementById("region-wrapper");
-bindCheckbox(regionWrapper);
-
-const productWrapper = document.getElementById("product-wrapper");
-bindCheckbox(productWrapper);
-
 function bindCheckbox(container) {
   let checkboxItem = container.querySelectorAll("[checkbox-type=single]");
   let checkboxAll = container.querySelector("[checkbox-type=all]");
