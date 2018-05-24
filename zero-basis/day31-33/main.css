@@ -1,0 +1,22 @@
+* {
+  font-family: arial, sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+#select-wrapper > div {
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
