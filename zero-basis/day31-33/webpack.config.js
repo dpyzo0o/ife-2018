@@ -30,7 +30,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebPackPlugin({
-      template: "./src/index.html"
+      template: "./index.html"
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",

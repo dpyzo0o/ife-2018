@@ -1,6 +1,6 @@
-import style from "./main.css";
-import table from "./table";
-import checkbox from "./checkbox";
+import style from "./css/main.css";
+import table from "./js/table";
+import checkbox from "./js/checkbox";
 
 const selectWrapper = document.getElementById("select-wrapper");
 selectWrapper.addEventListener("change", function() {
