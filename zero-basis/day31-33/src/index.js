@@ -1,13 +1,17 @@
+import style from "./main.css";
+import table from "./table";
+import checkbox from "./checkbox";
+
 const selectWrapper = document.getElementById("select-wrapper");
 selectWrapper.addEventListener("change", function() {
-  renderTable();
+  table.render();
 });
 
 const regionWrapper = document.getElementById("region-wrapper");
-bindCheckbox(regionWrapper);
+checkbox.bind(regionWrapper);
 
 const productWrapper = document.getElementById("product-wrapper");
-bindCheckbox(productWrapper);
+checkbox.bind(productWrapper);
 
-initCheckbox();
-initTable();
+table.init();
+checkbox.init();

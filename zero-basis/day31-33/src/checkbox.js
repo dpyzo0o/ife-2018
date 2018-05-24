@@ -1,4 +1,4 @@
-function bindCheckbox(container) {
+function bind(container) {
   let checkboxItem = container.querySelectorAll("[checkbox-type=single]");
   let checkboxAll = container.querySelector("[checkbox-type=all]");
 
@@ -32,13 +32,13 @@ function getSelectedItems() {
   let region = [];
   let product = [];
 
-  regionWrapper.querySelectorAll("[checkbox-type=single]").forEach(el => {
+  document.getElementById("region-wrapper").querySelectorAll("[checkbox-type=single]").forEach(el => {
     if (el.checked) {
       region.push(el.value);
     }
   });
 
-  productWrapper.querySelectorAll("[checkbox-type=single]").forEach(el => {
+  document.getElementById("product-wrapper").querySelectorAll("[checkbox-type=single]").forEach(el => {
     if (el.checked) {
       product.push(el.value);
     }
@@ -50,7 +50,7 @@ function getSelectedItems() {
   };
 }
 
-function initCheckbox() {
+function init() {
   document
     .getElementById("select-wrapper")
     .querySelectorAll("input")
@@ -58,3 +58,9 @@ function initCheckbox() {
       el.checked = true;
     });
 }
+
+export default {
+  bind,
+  init,
+  getSelectedItems
+};

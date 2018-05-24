@@ -1,4 +1,7 @@
-function renderTable() {
+import sourceData from "./data";
+import checkbox from "./checkbox";
+
+function render() {
   let wrapper = document.getElementById("table-wrapper");
   // empty table wrapper
   while (wrapper.firstChild) {
@@ -14,7 +17,7 @@ function renderTable() {
   tbody.innerHTML = `<tr><th>商品</th><th>地区</th><th>1月</th><th>2月</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>9月</th><th>10月</th><th>11月</th><th>12月</th></tr>`;
 
   // get selected regions and products
-  let selected = getSelectedItems();
+  let selected = checkbox.getSelectedItems();
 
   let isRegionFirst =
     selected.region.length === 1 &&
@@ -68,6 +71,11 @@ function getData(selected) {
   return res;
 }
 
-function initTable() {
-  renderTable();
+function init() {
+  render();
 }
+
+export default {
+  render,
+  init
+};
