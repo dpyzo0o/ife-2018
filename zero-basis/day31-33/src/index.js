@@ -13,5 +13,5 @@ checkbox.bind(regionWrapper);
 const productWrapper = document.getElementById("product-wrapper");
 checkbox.bind(productWrapper);
 
-table.init();
 checkbox.init();
+table.init();
