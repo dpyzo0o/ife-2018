@@ -1,8 +1,6 @@
-drawLineChart([120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]);
-
-function drawLineChart(data) {
-  let cvsWidth = 800;
-  let cvsHeight = 600;
+export function drawLineChart(data) {
+  let cvsWidth = 400;
+  let cvsHeight = 300;
   let margin = 10;
   let axisWidth = cvsWidth - 2 * margin;
   let axisHeight = cvsHeight - 2 * margin;
@@ -20,6 +18,7 @@ function drawLineChart(data) {
   canvas.height = cvsHeight;
 
   let ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.moveTo(margin, cvsHeight - margin);
   ctx.lineTo(margin, margin);
   ctx.moveTo(margin, cvsHeight - margin);

@@ -1,8 +1,6 @@
-drawBarChart([120, 100, 140, 160, 180, 185, 190, 210, 230, 245, 255, 270]);
-
-function drawBarChart(data) {
-  let svgWidth = 800;
-  let svgHeight = 600;
+export function drawBarChart(data) {
+  let svgWidth = 400;
+  let svgHeight = 300;
   let margin = 10;
   let axisWidth = svgWidth - 2 * margin;
   let axisHeight = svgHeight - 2 * margin;
@@ -14,6 +12,9 @@ function drawBarChart(data) {
   let ratio = axisHeight / max;
 
   let svg = document.getElementById("svg");
+  while (svg.firstChild) {
+    svg.removeChild(svg.firstChild);
+  }
   setAttributes(svg, {
     width: svgWidth,
     height: svgHeight
