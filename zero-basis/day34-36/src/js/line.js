@@ -38,7 +38,7 @@ export default class LineChart {
 
     let temp;
     let stride = (this.width - 2 * this.margin) / (2 * this.data.length + 1);
-    
+
     if (!ratio) {
       ratio = (this.height - 2 * this.margin) / Math.max(...this.data);
     }
@@ -67,14 +67,16 @@ export default class LineChart {
   }
 
   drawLines(data, color) {
+    // get max value of all data
     let max = Math.max(...data.map(el => {
-      return Math.max(...el);
-    }));
+        return Math.max(...el);
+      })
+    );
 
     let ratio = (this.height - 2 * this.margin) / max;
 
     data.forEach((el, idx) => {
       this.drawLine(el, ratio, color[idx]);
-    })
+    });
   }
 }
