@@ -1,17 +1,17 @@
-import sourceData from "./data";
-import checkbox from "./checkbox";
+import sourceData from './data';
+import checkbox from './checkbox';
 
 function render() {
-  let wrapper = document.getElementById("table-wrapper");
+  let wrapper = document.getElementById('table-wrapper');
   // empty table wrapper
   while (wrapper.firstChild) {
     wrapper.removeChild(wrapper.firstChild);
   }
 
-  let table = document.createElement("table");
+  let table = document.createElement('table');
   wrapper.appendChild(table);
 
-  let tbody = document.createElement("tbody");
+  let tbody = document.createElement('tbody');
   table.appendChild(tbody);
 
   tbody.innerHTML = `<tr><th>商品</th><th>地区</th><th>1月</th><th>2月</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>9月</th><th>10月</th><th>11月</th><th>12月</th></tr>`;
@@ -32,18 +32,22 @@ function render() {
 
   let selectedData = getData(selected);
   selectedData.forEach((el, idx) => {
-    let tr = document.createElement("tr");
+    let tr = document.createElement('tr');
 
     // merge cells
     if (isRegionFirst) {
       if (idx % selected.product.length === 0) {
-        tr.innerHTML = `<td rowspan=${selected.product.length}>${el.region}</td><td>${el.product}</td>`;
+        tr.innerHTML = `<td rowspan=${selected.product.length}>${
+          el.region
+        }</td><td>${el.product}</td>`;
       } else {
         tr.innerHTML = `<td>${el.product}</td>`;
       }
     } else {
       if (idx % selected.region.length === 0) {
-        tr.innerHTML = `<td rowspan=${selected.region.length}>${el.product}</td><td>${el.region}</td>`;
+        tr.innerHTML = `<td rowspan=${selected.region.length}>${
+          el.product
+        }</td><td>${el.region}</td>`;
       } else {
         tr.innerHTML = `<td>${el.region}</td>`;
       }
@@ -77,5 +81,6 @@ function init() {
 
 export default {
   render,
-  init
+  init,
+  getData
 };
