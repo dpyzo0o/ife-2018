@@ -1,6 +1,6 @@
 export function drawBarChart(data) {
-  let svgWidth = 400;
-  let svgHeight = 300;
+  let svgWidth = document.documentElement.clientWidth / 2;
+  let svgHeight = 400;
   let margin = 10;
   let axisWidth = svgWidth - 2 * margin;
   let axisHeight = svgHeight - 2 * margin;

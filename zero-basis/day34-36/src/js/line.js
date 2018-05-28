@@ -1,6 +1,6 @@
 export function drawLineChart(data) {
-  let cvsWidth = 400;
-  let cvsHeight = 300;
+  let cvsWidth = document.documentElement.clientWidth / 2;
+  let cvsHeight = 400;
   let margin = 10;
   let axisWidth = cvsWidth - 2 * margin;
   let axisHeight = cvsHeight - 2 * margin;
