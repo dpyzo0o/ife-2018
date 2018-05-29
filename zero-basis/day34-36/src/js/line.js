@@ -1,3 +1,6 @@
+import table from './table';
+import checkbox from './checkbox';
+
 export default class LineChart {
   constructor(container, config = {}) {
     this.container = container;
@@ -5,6 +8,19 @@ export default class LineChart {
     this.pointRadius = config.pointRadius || 2.5;
     this.width = document.documentElement.clientWidth / 2;
     this.height = document.documentElement.clientHeight - 350;
+    this.colors = [
+      '#f44242',
+      '#f48c41',
+      '#f4e541',
+      '#9af441',
+      '#41f4df',
+      '#41aff4',
+      '#4143f4',
+      '#ca41f4',
+      '#f4419d'
+    ];
+
+    this.init();
   }
 
   init() {
@@ -13,12 +29,19 @@ export default class LineChart {
     this.ctx = this.container.getContext('2d');
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawAxes();
+
+    let selectedData = table
+      .getData(checkbox.getSelectedItems())
+      .map(el => el.sale);
+    this.drawLines(selectedData);
   }
 
   set(data) {
     this.data = data;
-    this.init();
+    // this.init();
+    this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawLine();
+    this.drawAxes();
   }
 
   drawAxes() {
@@ -48,7 +71,7 @@ export default class LineChart {
       let y = this.height - this.margin - ratio * el;
       this.ctx.beginPath();
       this.ctx.arc(x, y, this.pointRadius, 0, 2 * Math.PI);
-      this.ctx.fillStyle = 'rgb(0,0,0)';
+      this.ctx.fillStyle = color;
       this.ctx.fill();
 
       if (idx) {
@@ -66,9 +89,10 @@ export default class LineChart {
     });
   }
 
-  drawLines(data, color) {
+  drawLines(data) {
     // get max value of all data
-    let max = Math.max(...data.map(el => {
+    let max = Math.max(
+      ...data.map(el => {
         return Math.max(...el);
       })
     );
@@ -76,7 +100,7 @@ export default class LineChart {
     let ratio = (this.height - 2 * this.margin) / max;
 
     data.forEach((el, idx) => {
-      this.drawLine(el, ratio, color[idx]);
+      this.drawLine(el, ratio, this.colors[idx]);
     });
   }
 }

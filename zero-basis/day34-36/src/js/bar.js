@@ -7,15 +7,19 @@ export default class BarChart {
     this.container = container;
     this.width = document.documentElement.clientWidth / 2;
     this.height = document.documentElement.clientHeight - 350;
+
+    this.init();
   }
 
-  set(data) {
-    this.data = data;
-
+  init() {
     this.setAttributes(this.container, {
       width: this.width,
       height: this.height
     });
+  }
+
+  set(data) {
+    this.data = data;
 
     this.clear();
     this.drawAxes();
