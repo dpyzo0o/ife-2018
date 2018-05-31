@@ -29,16 +29,11 @@ export default class LineChart {
     this.ctx = this.container.getContext('2d');
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawAxes();
-
-    let selectedData = table
-      .getData(checkbox.getSelectedItems())
-      .map(el => el.sale);
-    this.drawLines(selectedData);
+    this.drawLines(table.getCurrentData());
   }
 
   set(data) {
     this.data = data;
-    // this.init();
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawLine();
     this.drawAxes();

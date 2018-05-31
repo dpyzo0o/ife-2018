@@ -61,7 +61,11 @@ function render() {
 
 function getData(selected) {
   let res = [];
-  sourceData.forEach(el => {
+
+  // use localStorage data if available
+  let data = JSON.parse(localStorage.getItem('sourceData')) || sourceData;
+
+  data.forEach(el => {
     if (
       selected.region.indexOf(el.region) > -1 &&
       selected.product.indexOf(el.product) > -1
@@ -77,6 +81,17 @@ function init() {
   render();
 }
 
+function getCurrentData() {
+  let res = [];
+  let tb = document.getElementsByTagName('tbody')[0];
+
+  [...tb.childNodes].slice(1).forEach(el => {
+    res.push([...el.childNodes].slice(-12).map(el => el.innerText));
+  });
+
+  return res;
+}
+
 function callback(e) {
   let t = e.target;
   if (t.nodeName === 'TD') {
@@ -89,24 +104,22 @@ function callback(e) {
     t.firstChild.focus();
     t.firstChild.setAttribute('placeholder', temp.slice(0, temp.indexOf('<')));
 
-    t.firstChild.addEventListener('blur', function() {
-      if (this.value.trim() === '') {
-        t.innerHTML = temp;
-      } else if (isNum(this.value)) {
-        t.innerHTML = this.value + '<i class="fas fa-edit"></i>';
-      }
-    });
-
     t.firstChild.addEventListener('keydown', function(e) {
+      // key enter
       if (e.keyCode === 13) {
         if (isNum(this.value)) {
           t.innerHTML = this.value + '<i class="fas fa-edit"></i>';
         }
       }
 
+      // key esc
       if (e.keyCode === 27) {
         t.innerHTML = temp;
       }
+    });
+
+    t.firstChild.addEventListener('blur', function(e) {
+      t.innerHTML = temp;
     });
 
     t.querySelector('.fa-check').addEventListener('click', function(e) {
@@ -134,5 +147,6 @@ function isNum(value) {
 export default {
   render,
   init,
-  getData
+  getData,
+  getCurrentData
 };
