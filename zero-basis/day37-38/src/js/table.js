@@ -122,14 +122,15 @@ function callback(e) {
       t.innerHTML = temp;
     });
 
-    t.querySelector('.fa-check').addEventListener('click', function(e) {
+    // blur is executed before click, use mousedown instead
+    t.querySelector('.fa-check').addEventListener('mousedown', function(e) {
       let input = this.parentNode.previousElementSibling.value;
       if (isNum(input)) {
         t.innerHTML = this.parentNode.previousElementSibling.value + '<i class="fas fa-edit"></i>';
       }
     });
 
-    t.querySelector('.fa-times').addEventListener('click', function() {
+    t.querySelector('.fa-times').addEventListener('mousedown', function() {
       t.innerHTML = temp;
     });
   }
