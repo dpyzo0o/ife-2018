@@ -36,7 +36,8 @@ document
   });
 
 window.onresize = function() {
-  location.reload();
+  // workaround for firefox
+  window.location.href = window.location.href;
 };
 
 // save current data into localStorage
