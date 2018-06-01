@@ -94,7 +94,7 @@ function getCurrentData() {
 
 function callback(e) {
   let t = e.target;
-  if (t.nodeName === 'TD') {
+  if (t.nodeName === 'TD' && t.childNodes.length > 1) {
     let temp = t.innerHTML;
     t.innerHTML = `<input type="text">
                    <div class="input-icon">
