@@ -5,7 +5,7 @@ export default class LineChart {
   constructor(container, config = {}) {
     this.container = container;
     this.margin = config.margin || 10;
-    this.pointRadius = config.pointRadius || 2.5;
+    this.pointRadius = config.pointRadius || 5;
     this.width = document.documentElement.clientWidth / 2;
     this.height = document.documentElement.clientHeight - 350;
     this.colors = [
