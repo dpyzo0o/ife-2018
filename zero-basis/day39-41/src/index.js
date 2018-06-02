@@ -85,7 +85,7 @@ document.getElementById('btn-save').addEventListener('click', function() {
   localStorage.setItem('allData', JSON.stringify(allData));
 });
 
-// refresh checkboxes anf=d table
+// refresh checkboxes and table
 window.addEventListener("popstate", function() {
   checkbox.init();
   table.render();
