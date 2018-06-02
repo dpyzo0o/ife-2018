@@ -57,12 +57,33 @@ function getSelectedItems() {
 }
 
 function init() {
-  document
-    .getElementById('select-wrapper')
-    .querySelectorAll('input')
-    .forEach(el => {
-      el.checked = true;
+  if (localStorage.getItem('selectedData')) {
+    let data = JSON.parse(localStorage.getItem('selectedData'));
+    let product = [];
+    let region = [];
+
+    data.forEach(el => {
+      if (product.indexOf(el.product) === -1) {
+        product.push(el.product);
+        document.getElementsByName(el.product)[0].checked = true;
+      }
+
+      if (region.indexOf(el.region) === -1) {
+        region.push(el.region);
+        document.getElementsByName(el.region)[0].checked = true;
+      }
     });
+
+    document.getElementById('regionAll').checked = region.length === 3;
+    document.getElementById('productAll').checked = product.length === 3;
+  } else {
+    document
+      .getElementById('select-wrapper')
+      .querySelectorAll('input')
+      .forEach(el => {
+        el.checked = true;
+      });
+  }
 }
 
 export default {

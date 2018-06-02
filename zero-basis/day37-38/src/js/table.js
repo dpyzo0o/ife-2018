@@ -53,17 +53,17 @@ function render() {
       tr.innerHTML += `<td>${el}<i class="fas fa-edit"></i></td>`;
     });
 
-    tr.addEventListener('click', callback);
-
     tbody.appendChild(tr);
   });
+
+  tbody.addEventListener('click', callback);
 }
 
 function getData(selected) {
   let res = [];
 
-  // use localStorage data if available
-  let data = JSON.parse(localStorage.getItem('sourceData')) || sourceData;
+  // use local copy of sourceData if available
+  let data = JSON.parse(localStorage.getItem('allData')) || sourceData;
 
   data.forEach(el => {
     if (

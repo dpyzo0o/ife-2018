@@ -3,6 +3,7 @@ import table from './js/table';
 import checkbox from './js/checkbox';
 import BarChart from './js/bar';
 import LineChart from './js/line';
+import sourceData from './js/data';
 
 checkbox.bind(document.getElementById('region-wrapper'));
 checkbox.bind(document.getElementById('product-wrapper'));
@@ -43,24 +44,49 @@ window.onresize = function() {
 // save current data into localStorage
 document.getElementById('btn-save').addEventListener('click', function() {
   let data = [];
+  let allData = sourceData;
   let tb = document.getElementsByTagName('tbody')[0];
+  let thead = tb.childNodes[0];
+  let regionFirst = thead.childNodes[0].innerHTML === '地区';
+  let tempRow;
 
   [...tb.childNodes].slice(1).forEach((el, idx, arr) => {
     let row = [...el.childNodes];
+
     if (row.length === 14) {
-      data.push({
-        product: row[0].innerText,
-        region: row[1].innerText,
+      tempRow = row;
+      let item = {
+        product: regionFirst ? row[1].innerText : row[0].innerText,
+        region: regionFirst ? row[0].innerText : row[1].innerText,
         sale: row.slice(-12).map(el => el.innerText)
-      });
+      };
+      data.push(item);
+      modifySourceData(allData, item);
     } else {
-      data.push({
-        product: [...arr[Math.floor(idx / 3) * 3].childNodes][0].innerText,
-        region: row[0].innerText,
+      let item = {
+        product: regionFirst
+          ? row[0].innerText
+          : tempRow[0].innerText,
+        region: regionFirst
+          ? tempRow[0].innerText
+          : row[0].innerText,
         sale: row.slice(-12).map(el => el.innerText)
-      });
+      };
+      data.push(item);
+      modifySourceData(allData, item);
     }
   });
 
-  localStorage.setItem('sourceData', JSON.stringify(data));
+  localStorage.setItem('selectedData', JSON.stringify(data));
+
+  // save the modified source data
+  localStorage.setItem('allData', JSON.stringify(allData));
 });
+
+function modifySourceData(allData, item) {
+  allData.forEach(el => {
+    if (el.product === item.product && el.region === item.region) {
+      el.sale = item.sale;
+    }
+  });
+}
