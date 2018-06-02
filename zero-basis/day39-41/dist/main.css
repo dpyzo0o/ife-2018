@@ -1,0 +1,107 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+* {
+  font-family: arial, sans-serif;
+  box-sizing: border-box;
+}
+
+#table-wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  height: 300px;
+}
+
+table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+
+tr:hover td:not([rowspan]) {
+  background: #ccc;
+}
+
+td {
+  position: relative;
+}
+
+td .fa-edit {
+  visibility: hidden;
+  position: absolute;
+  right: 5px;
+  pointer-events: none;
+}
+
+td:hover .fa-edit {
+  visibility: visible;
+}
+
+td input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding-left: 10px;
+}
+
+.input-icon {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 5px;
+  top: 0;
+  bottom: 0;
+}
+
+.input-icon i:last-child {
+  margin-left: 2px;
+}
+
+#select-wrapper {
+  text-align: center;
+  height: 30px;
+}
+
+#select-wrapper > div {
+  display: inline-block;
+  line-height: 1.5;
+}
+
+#product-wrapper {
+  margin-left: 20px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+#btn-save {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
