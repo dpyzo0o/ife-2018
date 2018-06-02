@@ -11,7 +11,11 @@ checkbox.bind(document.getElementById('product-wrapper'));
 checkbox.init();
 table.init();
 
-const barChart = new BarChart(document.getElementById('svg'));
+const barChart = new BarChart(document.getElementById('svg'), {
+  data: [...document.getElementsByTagName('tr')[1].childNodes]
+    .slice(-12)
+    .map(el => el.innerText)
+});
 const lineChart = new LineChart(document.getElementById('canvas'));
 
 window.addEventListener('mouseover', function(e) {
@@ -33,7 +37,11 @@ document
   .getElementById('select-wrapper')
   .addEventListener('change', function(e) {
     // add to history stack whenever user makes changes to selection
-    history.pushState({}, null, '#' + encodeURI(JSON.stringify(checkbox.getSelectedItems())));
+    history.pushState(
+      {},
+      null,
+      '#' + encodeURI(JSON.stringify(checkbox.getSelectedItems()))
+    );
     table.render();
     lineChart.init();
   });
@@ -66,12 +74,8 @@ document.getElementById('btn-save').addEventListener('click', function() {
       modifySourceData(allData, item);
     } else {
       let item = {
-        product: regionFirst
-          ? row[0].innerText
-          : tempRow[0].innerText,
-        region: regionFirst
-          ? tempRow[0].innerText
-          : row[0].innerText,
+        product: regionFirst ? row[0].innerText : tempRow[0].innerText,
+        region: regionFirst ? tempRow[0].innerText : row[0].innerText,
         sale: row.slice(-12).map(el => el.innerText)
       };
       data.push(item);
@@ -86,7 +90,7 @@ document.getElementById('btn-save').addEventListener('click', function() {
 });
 
 // refresh checkboxes and table
-window.addEventListener("popstate", function() {
+window.addEventListener('popstate', function() {
   checkbox.init();
   table.render();
 });

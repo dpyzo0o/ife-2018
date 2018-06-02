@@ -16,6 +16,8 @@ export default class BarChart {
       width: this.width,
       height: this.height
     });
+    this.drawAxes();
+    this.drawBars();
   }
 
   set(data) {

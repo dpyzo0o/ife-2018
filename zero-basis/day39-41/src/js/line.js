@@ -40,6 +40,7 @@ export default class LineChart {
   }
 
   drawAxes() {
+    this.ctx.beginPath();
     this.ctx.moveTo(this.margin, this.height - this.margin);
     this.ctx.lineTo(this.margin, this.margin);
     this.ctx.moveTo(this.margin, this.height - this.margin);
@@ -49,9 +50,14 @@ export default class LineChart {
     this.ctx.stroke();
   }
 
-  drawLine(data, ratio, color = 'rgb(0,0,0)') {
+  drawLine(data, ratio, color) {
     if (data) {
       this.data = data;
+    }
+
+    // pick a random color
+    if (!color) {
+      color = this.colors[Math.floor(Math.random() * 9)];
     }
 
     let temp;
