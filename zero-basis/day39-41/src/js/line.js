@@ -5,17 +5,17 @@ export default class LineChart {
   constructor(container, config = {}) {
     this.container = container;
     this.margin = config.margin || 10;
-    this.pointRadius = config.pointRadius || 5;
-    this.width = document.documentElement.clientWidth / 2;
-    this.height = document.documentElement.clientHeight - 350;
+    this.pointRadius = config.pointRadius || 4;
+    this.width = document.documentElement.clientWidth / 2.25;
+    this.height = document.documentElement.clientHeight - 370;
     this.colors = [
-      '#f44242',
-      '#f48c41',
-      '#f4e541',
-      '#9af441',
-      '#41f4df',
-      '#41aff4',
-      '#4143f4',
+      '#f71111',
+      '#f9c300',
+      '#43ed00',
+      '#00edd1',
+      '#006eed',
+      '#9600ed',
+      '#ed00b5',
       '#ca41f4',
       '#f4419d'
     ];
@@ -103,5 +103,9 @@ export default class LineChart {
     data.forEach((el, idx) => {
       this.drawLine(el, ratio, this.colors[idx]);
     });
+  }
+
+  drawGrid() {
+
   }
 }

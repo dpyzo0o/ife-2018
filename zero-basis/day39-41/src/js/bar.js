@@ -2,11 +2,11 @@ export default class BarChart {
   constructor(container, config = {}) {
     this.data = config.data || [];
     this.margin = config.margin || 10;
-    this.barColor = config.barColor || 'lightblue';
+    this.barColor = config.barColor || '#2669ef';
     this.axisColor = config.axisColor || 'rgb(0,0,0)';
     this.container = container;
-    this.width = document.documentElement.clientWidth / 2;
-    this.height = document.documentElement.clientHeight - 350;
+    this.width = document.documentElement.clientWidth / 2.25;
+    this.height = document.documentElement.clientHeight - 370;
 
     this.init();
   }
@@ -59,16 +59,17 @@ export default class BarChart {
   }
 
   drawBars() {
-    let barWidth = (this.width - 2 * this.margin) / (2 * this.data.length + 1);
+    // let barWidth = (this.width - 2 * this.margin) / (2 * this.data.length + 1);
+    let stride = (this.width - 2 * this.margin) / (this.data.length + 1);
     let ratio = (this.height - 2 * this.margin) / Math.max(...this.data);
 
     this.data.forEach((el, idx) => {
       let h = ratio * el;
       let bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
       this.setAttributes(bar, {
-        x: this.margin + barWidth * (2 * idx + 1),
+        x: this.margin + stride * (idx + 0.5),
         y: this.height - this.margin - h - 2,
-        width: barWidth,
+        width: stride * 0.6,
         height: h,
         fill: this.barColor
       });
