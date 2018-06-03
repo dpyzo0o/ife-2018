@@ -4,9 +4,10 @@ import checkbox from './checkbox';
 export default class LineChart {
   constructor(container, config = {}) {
     this.container = container;
-    this.margin = config.margin || 10;
+    this.ctx = this.container.getContext('2d');
+    this.margin = config.margin || 20;
     this.pointRadius = config.pointRadius || 4;
-    this.width = document.documentElement.clientWidth / 2.25;
+    this.width = document.documentElement.clientWidth / 2;
     this.height = document.documentElement.clientHeight - 370;
     this.colors = [
       '#f71111',
@@ -24,9 +25,13 @@ export default class LineChart {
   }
 
   init() {
-    this.container.width = this.width;
-    this.container.height = this.height;
-    this.ctx = this.container.getContext('2d');
+    // make canvas sharp
+    this.container.width = this.width * 2;
+    this.container.height = this.height * 2;
+    this.container.style.width = this.width + 'px';
+    this.container.style.height = this.height + 'px';
+    this.ctx.scale(2, 2);
+
     this.ctx.clearRect(0, 0, this.width, this.height);
     this.drawAxes();
     this.drawLines(table.getCurrentData());
@@ -70,6 +75,9 @@ export default class LineChart {
     this.data.forEach((el, idx) => {
       let x = this.margin + stride * (2 * idx + 1);
       let y = this.height - this.margin - ratio * el;
+
+      this.drawLabelX(x, this.height - 2, idx + 1);
+
       this.ctx.beginPath();
       this.ctx.arc(x, y, this.pointRadius, 0, 2 * Math.PI);
       this.ctx.fillStyle = color;
@@ -105,7 +113,11 @@ export default class LineChart {
     });
   }
 
-  drawGrid() {
-
+  drawLabelX(x, y, idx) {
+    this.ctx.beginPath();
+    this.ctx.font = '12px arial';
+    this.ctx.textAlign = 'center';
+    this.ctx.fillStyle = 'rgb(0,0,0)';
+    this.ctx.fillText(`${idx}月`, x , y);
   }
 }

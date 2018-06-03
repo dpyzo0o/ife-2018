@@ -1,11 +1,11 @@
 export default class BarChart {
   constructor(container, config = {}) {
     this.data = config.data || [];
-    this.margin = config.margin || 10;
+    this.margin = config.margin || 20;
     this.barColor = config.barColor || '#2669ef';
     this.axisColor = config.axisColor || 'rgb(0,0,0)';
     this.container = container;
-    this.width = document.documentElement.clientWidth / 2.25;
+    this.width = document.documentElement.clientWidth / 2;
     this.height = document.documentElement.clientHeight - 370;
 
     this.init();
@@ -59,22 +59,39 @@ export default class BarChart {
   }
 
   drawBars() {
-    // let barWidth = (this.width - 2 * this.margin) / (2 * this.data.length + 1);
-    let stride = (this.width - 2 * this.margin) / (this.data.length + 1);
+    let stride = (this.width - 2 * this.margin) / this.data.length;
+    let barW = 0.65 * stride;
     let ratio = (this.height - 2 * this.margin) / Math.max(...this.data);
 
     this.data.forEach((el, idx) => {
       let h = ratio * el;
       let bar = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      let x = this.margin + stride * (idx + 0.5) - 0.5 * barW;
+      let y = this.height - this.margin - h - 2;
+      // draw bar
       this.setAttributes(bar, {
-        x: this.margin + stride * (idx + 0.5),
-        y: this.height - this.margin - h - 2,
-        width: stride * 0.6,
+        x,
+        y,
+        width: barW,
         height: h,
         fill: this.barColor
       });
       this.container.appendChild(bar);
+      // draw x label
+      this.container.appendChild(this.drawLabelX(x + 0.5 * barW, this.height, idx + 1));
     });
+  }
+
+  drawLabelX(x, y, index) {
+    let text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.innerHTML = `${index}月`;
+    this.setAttributes(text, {
+      x,
+      y,
+      dy: -2,
+      style: 'text-anchor: middle;font-size: 0.8em;'
+    });
+    return text;
   }
 
   setAttributes(el, attrs) {
