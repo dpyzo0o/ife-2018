@@ -2,7 +2,8 @@ function Waiter(name, salary) {
   Staff.call(this, name, salary);
 }
 
-Waiter.prototype = new Staff();
+Waiter.prototype = Object.create(Staff.prototype);
+Waiter.prototype.constructor = Waiter;
 
 Waiter.prototype.doJob = function(order) {
   if (order.constructor === Array) {
