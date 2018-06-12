@@ -86,22 +86,5 @@ function operate() {
   waiter.welcome(customer);
   customer.order(menu.slice(), 3 * restaurant.timeUnit)
     .then(order => waiter.work(order))
-    .then(order => cook.work(order[0]));
-  // while (true) {
-  //   let customer = customerQueue.shift();
-  //   waiter.welcome(customer);
-  //   customer.order(menu.slice(), 3 * restaurant.timeUnit)
-  //     .then((order) => waiter.work(order));
-  //   // restaurant.cash += order[0].price - order[0].cost;
-  //   // cook.work(order[0]);
-  //   // waiter.work();
-  //   // customer.eat();
-  //   // waiter.bye();
-  //   if (customerQueue.length === 0) {
-  //     break;
-  //   }
-  //   console.log('Next customer...');
-  // }
-
-  // console.log('Finished today. Current cash: ' + restaurant.cash);
+    .then(order => cook.work(order, waiter));
 }

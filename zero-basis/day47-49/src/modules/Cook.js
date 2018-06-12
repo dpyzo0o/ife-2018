@@ -10,7 +10,18 @@ export default class Cook extends Staff {
     Cook.instance = this;
   }
 
-  work(dish) {
-    console.log('Cook: ' + dish.name + ' is cooked.');
+  work(order, waiter) {
+    for (let i = 0, p = Promise.resolve(); i < order.length; i++) {
+      p = p.then(
+        _ =>
+          new Promise((resolve, reject) =>
+            setTimeout(() => {
+              console.log(`${order[i].name} cooked.`);
+              waiter.work();
+              resolve();
+            }, order[i].time * 1000)
+          )
+      );
+    }
   }
 }

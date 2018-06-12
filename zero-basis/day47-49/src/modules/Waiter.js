@@ -20,7 +20,11 @@ export default class Waiter extends Staff {
         }, 1000);
       });
     } else {
-      console.log('Waiter: This is your order. Enjoy!');
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('Waiter: This is your order. Enjoy!');
+        }, 1000);
+      });
     }
   }
 
