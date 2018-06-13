@@ -29,9 +29,10 @@ export default class Waiter extends Staff {
       Util.move(this, 'hor', 150);
       Util.wait(1000).then(() => {
         console.log('Waiter: This is your order. Enjoy!');
-        // still have dishes in kitchen
-        if (!order) {
+        if (!order) { // still have dishes in kitchen
           Util.move(this, 'hor', -300);
+        } else { // ready to collect money
+          Util.move(this, 'hor', 100);
         }
       });
     }
