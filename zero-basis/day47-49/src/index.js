@@ -1,22 +1,27 @@
 import './css/main.css';
 import Factory from './modules/Factory';
+import cookImg from './img/cook.png';
+import waiterImg from './img/waiter.png';
+import customerImg from './img/customer.png';
 
 // init restaurant
 const restaurant = Factory.getInstance(Factory.RESTAURANT, {
   cash: 10000,
   seats: 20,
   staff: [],
-  timeUnit: 1000 // 1 seconds
+  customerQueue: []
 });
 
 // hire staff
 const cook = Factory.getInstance(Factory.COOK, {
   name: 'Ramsay',
-  salary: 4000
+  salary: 4000,
+  img: cookImg
 });
 const waiter = Factory.getInstance(Factory.WAITER, {
   name: 'Cinderella',
-  salary: 1000
+  salary: 1000,
+  img: waiterImg
 });
 restaurant.hire(cook);
 restaurant.hire(waiter);
@@ -39,19 +44,19 @@ const menu = [
     name: 'Ma Po Tofu',
     cost: 30,
     price: 60,
-    time: 3
+    time: 4
   }),
   Factory.getInstance(Factory.DISH, {
     name: 'Dumplings',
     cost: 35,
     price: 70,
-    time: 2
+    time: 3
   }),
   Factory.getInstance(Factory.DISH, {
     name: 'Spring Rolls',
     cost: 20,
     price: 50,
-    time: 2
+    time: 3
   }),
   Factory.getInstance(Factory.DISH, {
     name: 'Peking Roasted Duck',
@@ -62,29 +67,38 @@ const menu = [
 ];
 
 // init customer queue
-const customerQueue = [
+restaurant.customerQueue = [
   Factory.getInstance(Factory.CUSTOMER, {
     name: 'David Beckham',
-    gender: 'male'
+    gender: 'male',
+    img: customerImg
   }),
   Factory.getInstance(Factory.CUSTOMER, {
     name: 'Cristiano Ronaldo',
-    gender: 'male'
+    gender: 'male',
+    img: customerImg
   }),
   Factory.getInstance(Factory.CUSTOMER, {
     name: 'Taylor Swift',
-    gender: 'female'
+    gender: 'female',
+    img: customerImg
   })
 ];
 
+restaurant.initView();
+
 document.querySelector('.start').addEventListener('click', function() {
-  operate();
+  start();
 });
 
-function operate() {
-  let customer = customerQueue.shift();
+function start() {
+  if (restaurant.customerQueue.length === 0) {
+    return;
+  }
+
+  let customer = restaurant.nextCustomer();
   waiter.welcome(customer);
-  customer.order(menu.slice(), 3 * restaurant.timeUnit)
+  customer.order(menu.slice(), 3000)
     .then(order => waiter.work(order))
     .then(order => cook.work(order, waiter));
 }

@@ -18,6 +18,10 @@ body {
   border: 5px dashed lightskyblue;
 }
 
+.restaurant > div {
+  padding-top: 20px;
+}
+
 .kitchen {
   flex: 1;
   background: lightcoral;
@@ -29,7 +33,7 @@ body {
 }
 
 .waiting-area {
-  width: 100px;
+  width: 128px;
   background: lightgray;
 }
 
@@ -51,4 +55,10 @@ body {
   display: inline-block;
   margin: 4px 2px;
   cursor: pointer;
+}
+
+img {
+  position: relative;
+  left: 0;
+  transition: all 1s ease-in-out;
 }

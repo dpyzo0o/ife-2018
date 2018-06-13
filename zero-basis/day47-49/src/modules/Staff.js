@@ -8,6 +8,7 @@ export default class Staff {
     this.id = Math.random().toString(36).substr(2, 16);
     this.name = config.name;
     this.salary = config.salary;
+    this.img = config.img;
   }
 
   work() {
