@@ -13,7 +13,8 @@ export default class Customer {
   order(menu) {
     Util.startCountdown(3, '.dining-area .status', 'ordering');
     return Util.wait(3000).then(() => {
-      let num = Math.floor(Math.random() * menu.length) + 1;
+      // order 1-4 dishes
+      let num = Math.floor(Math.random() * 4) + 1;
       let order = [];
       while (num--) {
         let idx = Math.floor(Math.random() * menu.length);
@@ -22,29 +23,14 @@ export default class Customer {
       }
       // finish ordering
       this.setStatus('');
-      console.log(this.name + ': I want to order ' + order.map(el => el.name));
+      Util.updateLog(this.name + ': I want to order ' + order.map(el => el.name));
       Util.renderDiningDishList(order);
       return order;
     });
-    // return new Promise(resolve => {
-    //   setTimeout(() => {
-    //     let num = Math.floor(Math.random() * menu.length) + 1;
-    //     let order = [];
-    //     while (num--) {
-    //       let idx = Math.floor(Math.random() * menu.length);
-    //       order.push(menu[idx]);
-    //       menu.splice(idx, 1);
-    //     }
-    //     console.log(this.name + ': I want to order ' + order.map(el => el.name));
-    //     Util.renderDiningDishList(order);
-    //     document.querySelector('.dining-area .timer').innerHTML = '';
-    //     resolve(order);
-    //   }, 3000);
-    // });
   }
 
   eat() {
-    console.log(this.name + ': (finished eating..) Very delicious!');
+    Util.updateLog(this.name + ': (finished eating..) Very delicious!');
   }
 
   setStatus(status) {

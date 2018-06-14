@@ -80,24 +80,31 @@ restaurant.customerQueue = [
   Factory.getInstance(Factory.CUSTOMER, {
     name: 'Lily',
     img: customerImg
+  }),
+  Factory.getInstance(Factory.CUSTOMER, {
+    name: 'Robert',
+    img: customerImg
   })
 ];
 
-restaurant.initView();
+Util.initView(restaurant);
 
-document.querySelector('.start').addEventListener('click', function() {
-  serving();
-});
+document.querySelector('.start').addEventListener('click', () => serving());
 
 function serving() {
+  // stop serving if there is no customer
   if (restaurant.customerQueue.length === 0) {
     return;
   }
 
-  waiter.welcome(restaurant.nextCustomer())
+  waiter
+    .welcome(restaurant.nextCustomer())
     .then(customer => customer.order(menu.slice()))
+    .then(order => restaurant.updateCash(order))
     .then(order => waiter.work(order))
     .then(order => cook.work(order))
-    .then(() => Util.wait(4000))
+    .then(() => Util.wait(3000)) // cleaning
+    .then(() => Util.updateCash(restaurant)) // update cash
+    .then(() => Util.wait(1000)) // little nicer interaction
     .then(serving);
 }
