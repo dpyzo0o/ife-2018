@@ -4,13 +4,13 @@ function wait(ms) {
 
 function initView(restaurant) {
   for (let staff of restaurant.staff) {
-    switch (staff.constructor.name) {
-      case 'Cook':
+    switch (staff.type) {
+      case 'COOK':
         let cookImg = new Image();
         cookImg.src = staff.img;
         document.querySelector('.kitchen').appendChild(cookImg);
         break;
-      case 'Waiter':
+      case 'WAITER':
         let waiterImg = new Image();
         waiterImg.src = staff.img;
         waiterImg.setAttribute('id', staff.id);

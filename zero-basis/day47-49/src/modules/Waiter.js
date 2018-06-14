@@ -4,6 +4,7 @@ import Util from './Util';
 export default class Waiter extends Staff {
   constructor(config) {
     super(config);
+    this.type = 'WAITER';
     // singleton
     if (typeof Waiter.instance === 'object') {
       return Waiter.instance;

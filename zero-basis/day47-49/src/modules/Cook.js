@@ -5,6 +5,7 @@ export default class Cook extends Staff {
   constructor(config) {
     super(config);
     this.status = 'free';
+    this.type = 'COOK';
     // singleton
     if (typeof Cook.instance === 'object') {
       return Cook.instance;
