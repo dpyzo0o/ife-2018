@@ -19,7 +19,17 @@ body {
 }
 
 .restaurant > div {
+  position: relative;
   padding-top: 20px;
+}
+
+.restaurant .title {
+  position: absolute;
+  bottom: 0;
+  font-size: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: grey;
 }
 
 .kitchen {
@@ -45,20 +55,49 @@ body {
 .start {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 40px;
   background-color: #008cba;
   border: none;
+  margin-left: 150px;
   color: white;
   padding: 5px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 4px 2px;
   cursor: pointer;
+}
+
+.restaurant-title {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  font-size: 28px;
+  color: rgb(255, 27, 27);
 }
 
 img {
   position: relative;
   left: 0;
   transition: all 1s ease-in-out;
+}
+
+.dish-list {
+  position: absolute;
+  left: 30px;
+  top: 250px;
+  padding: 0;
+  list-style: none;
+}
+
+.kitchen .status {
+  position: absolute;
+  left: 30px;
+  top: 180px;
+}
+
+.dining-area .status {
+  position: absolute;
+  right: 100px;
+  top: 180px;
 }

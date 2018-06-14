@@ -11,7 +11,46 @@ function move(element, direction, distance) {
   }
 }
 
+function renderKitchenDishList(order) {
+  let list = document.querySelector('.kitchen .dish-list');
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  };
+  order.forEach(dish => {
+    let li = document.createElement('li');
+    li.innerHTML = dish.name;
+    list.appendChild(li);
+  });
+}
+
+function renderDiningDishList(order) {
+  let list = document.querySelector('.dining-area .dish-list');
+  while (list.firstChild) {
+    list.removeChild(list.firstChild);
+  };
+  if (order.length) {
+    order.forEach(dish => {
+      let li = document.createElement('li');
+      li.innerHTML = dish.name;
+      list.appendChild(li);
+    });
+  }
+}
+
+function startCountdown(time, selector, text) {
+  let dom = document.querySelector(selector);
+  (function timer() {
+    dom.innerHTML = `${text} (${time--}s)`;
+    if (time > 0) {
+      setTimeout(timer, 1000);
+    }
+  })();
+}
+
 export default {
   wait,
-  move
-}
+  move,
+  renderKitchenDishList,
+  renderDiningDishList,
+  startCountdown
+};
