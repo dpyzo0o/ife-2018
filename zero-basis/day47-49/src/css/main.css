@@ -9,16 +9,22 @@ body {
   box-sizing: border-box;
 }
 
+.wrapper {
+  position: absolute;
+  width: 1320px;
+  height: 600px;
+  left: 50%;
+  top: 50%;
+  margin-left: -660px;
+  margin-top: -300px;
+}
+
 .restaurant {
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  position: absolute;
   width: 900px;
   height: 600px;
-  top: 50%;
-  left: 30px;
-  margin-top: -300px;
   border: 5px dashed lightskyblue;
 }
 
@@ -26,9 +32,8 @@ body {
   position: absolute;
   width: 400px;
   height: 600px;
-  top: 50%;
-  left: 960px;
-  margin-top: -300px;
+  top: 0;
+  right: 0;
   background: #ddd;
 }
 
