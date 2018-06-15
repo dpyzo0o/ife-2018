@@ -4,6 +4,10 @@ import cookImg from './img/cook.png';
 import waiterImg from './img/waiter.png';
 import customerImg from './img/customer.png';
 import Util from './modules/Util';
+import Constants from './modules/Constants';
+
+// set time unit
+Constants.timeUnit = 1000;
 
 // init restaurant
 const restaurant = Factory.getInstance(Factory.RESTAURANT, {
@@ -33,37 +37,37 @@ const menu = [
     name: 'Sweet and Sour Pork',
     cost: 50,
     price: 100,
-    time: 4
+    time: 3
   }),
   Factory.getInstance(Factory.DISH, {
     name: 'Kung Pao Chicken',
     cost: 40,
     price: 80,
-    time: 6
+    time: 4
   }),
   Factory.getInstance(Factory.DISH, {
     name: 'Ma Po Tofu',
     cost: 30,
     price: 60,
-    time: 6
+    time: 3
   }),
   Factory.getInstance(Factory.DISH, {
     name: 'Dumplings',
     cost: 35,
     price: 70,
-    time: 8
+    time: 3
   }),
   Factory.getInstance(Factory.DISH, {
     name: 'Spring Rolls',
     cost: 20,
     price: 50,
-    time: 6
+    time: 3
   }),
   Factory.getInstance(Factory.DISH, {
     name: 'Peking Roasted Duck',
     cost: 100,
     price: 200,
-    time: 8
+    time: 5
   })
 ];
 
@@ -90,21 +94,22 @@ restaurant.customerQueue = [
 Util.initView(restaurant);
 
 document.querySelector('.start').addEventListener('click', () => serving());
+document.querySelector('.reset').addEventListener('click', () => location.reload());
 
 function serving() {
   // stop serving if there is no customer
   if (restaurant.customerQueue.length === 0) {
+    document.querySelector('.reset').style.display = 'block';
     return;
   }
 
   waiter
     .welcome(restaurant.nextCustomer())
-    .then(customer => customer.order(menu.slice()))
+    .then(customer => customer.order(menu.slice())) // ordering
     .then(order => restaurant.updateCash(order))
-    .then(order => waiter.work(order))
-    .then(order => cook.work(order))
-    .then(() => Util.wait(3000)) // cleaning
+    .then(order => waiter.work(order)) // pass order to cook
+    .then(order => cook.work(order)) // cooking & serving
+    .then(() => Util.wait(2)) // cleaning
     .then(() => Util.updateCash(restaurant)) // update cash
-    .then(() => Util.wait(1000)) // little nicer interaction
     .then(serving);
 }

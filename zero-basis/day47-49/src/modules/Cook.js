@@ -1,5 +1,6 @@
 import Staff from './Staff';
 import Util from './Util';
+import Constants from './Constants';
 
 export default class Cook extends Staff {
   constructor(config) {
@@ -15,14 +16,14 @@ export default class Cook extends Staff {
 
   work(order) {
     this.setStatus('busy');
-    Util.renderKitchenDishList(order.dishList);
+    Util.renderDishList('kitchen', order.dishList.slice(1));
     return order.dishList.reduce(
       (promise, dish, index, arr) =>
         promise.then(() => {
           Util.startCountdown(dish.time, '.kitchen .status', `cooking ${dish.name}`);
-          return Util.wait(dish.time * 1000).then(() => {
+          return Util.wait(dish.time).then(() => {
             Util.updateLog(`Cook: ${dish.name} cooked.`);
-            Util.renderKitchenDishList(arr.slice(index + 1));
+            Util.renderDishList('kitchen', arr.slice(index + 2));
             let finish = index === arr.length - 1;
             if (finish) {
               this.setStatus('free');

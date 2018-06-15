@@ -1,5 +1,7 @@
-function wait(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+import Constants from './Constants';
+
+function wait(time) {
+  return new Promise(resolve => setTimeout(resolve, time * Constants.timeUnit));
 }
 
 function initView(restaurant) {
@@ -13,6 +15,7 @@ function initView(restaurant) {
       case 'WAITER':
         let waiterImg = new Image();
         waiterImg.src = staff.img;
+        waiterImg.style.transitionDuration = `${Constants.timeUnit / 2 / 1000}s`;
         waiterImg.setAttribute('id', staff.id);
         document.querySelector('.dining-area').appendChild(waiterImg);
         break;
@@ -21,6 +24,7 @@ function initView(restaurant) {
   for (let customer of restaurant.customerQueue) {
     let customerImg = new Image();
     customerImg.src = customer.img;
+    customerImg.style.transitionDuration = `${Constants.timeUnit / 2 / 1000}s`;
     customerImg.setAttribute('id', customer.id);
     document.querySelector('.waiting-area').appendChild(customerImg);
   }
@@ -45,8 +49,16 @@ function move(element, direction, distance) {
   }
 }
 
-function renderKitchenDishList(order) {
-  let list = document.querySelector('.kitchen .dish-list');
+function renderDishList(area, order) {
+  let list;
+  switch (area) {
+    case 'kitchen':
+      list = document.querySelector('.kitchen .dish-list');
+      break;
+    case 'dining':
+      list = document.querySelector('.dining-area .dish-list');
+      break;
+  }
   while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
@@ -57,21 +69,8 @@ function renderKitchenDishList(order) {
   });
 }
 
-function renderDiningDishList(order) {
-  let list = document.querySelector('.dining-area .dish-list');
-  while (list.firstChild) {
-    list.removeChild(list.firstChild);
-  }
-  if (order.length) {
-    order.forEach(dish => {
-      let li = document.createElement('li');
-      li.innerHTML = dish.name;
-      list.appendChild(li);
-    });
-  }
-}
-
 function startCountdown(time, selector, text) {
+  time = time * Constants.timeUnit / 1000;
   let dom = document.querySelector(selector);
   (function timer() {
     dom.innerHTML = `${text} (${time--}s)`;
@@ -93,8 +92,7 @@ function updateLog(text) {
 export default {
   wait,
   move,
-  renderKitchenDishList,
-  renderDiningDishList,
+  renderDishList,
   startCountdown,
   initView,
   updateCash,

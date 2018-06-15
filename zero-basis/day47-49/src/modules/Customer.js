@@ -1,4 +1,5 @@
 import Util from './Util';
+import Constants from './Constants';
 
 export default class Customer {
   constructor(config) {
@@ -12,7 +13,7 @@ export default class Customer {
 
   order(menu) {
     Util.startCountdown(3, '.dining-area .status', 'ordering');
-    return Util.wait(3000).then(() => {
+    return Util.wait(3).then(() => {
       // order 1-4 dishes
       let num = Math.floor(Math.random() * 4) + 1;
       let order = [];
@@ -24,7 +25,7 @@ export default class Customer {
       // finish ordering
       this.setStatus('');
       Util.updateLog(this.name + ': I want to order ' + order.map(el => el.name));
-      Util.renderDiningDishList(order);
+      Util.renderDishList('dining', order);
       return order;
     });
   }

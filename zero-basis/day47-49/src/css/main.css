@@ -68,7 +68,7 @@ body {
 
 .start {
   position: absolute;
-  left: 250px;
+  right: 10px;
   top: 10px;
   background-color: #008cba;
   border: none;
@@ -76,8 +76,22 @@ body {
   padding: 5px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   cursor: pointer;
+}
+
+.reset {
+  display: none;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: #008cba;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 1;
 }
 
 .restaurant-title {
@@ -114,7 +128,9 @@ body {
 img {
   position: relative;
   left: 0;
-  transition: all 1s ease-in-out;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1s;
 }
 
 .dish-list {
