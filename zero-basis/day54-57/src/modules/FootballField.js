@@ -1,13 +1,13 @@
 import Util from './Util';
-import { fieldDimensions as _ } from './Constants';
+import _ from './Constants';
 
 export default class FootballField {
   constructor(config) {
-    this.ratio = Math.max(config.fieldWidth / config.containerHeight, config.fieldLength / config.containerWidth);
+    _.RATIO = Math.max(config.fieldWidth / config.containerHeight, config.fieldLength / config.containerWidth);
     this.containerWidth = config.containerWidth;
     this.containerHeight = config.containerHeight;
-    this.width = Math.round(config.fieldLength / this.ratio);
-    this.height = Math.round(config.fieldWidth / this.ratio);
+    this.width = Math.round(config.fieldLength / _.RATIO);
+    this.height = Math.round(config.fieldWidth / _.RATIO);
   }
 
   init() {
@@ -30,16 +30,16 @@ export default class FootballField {
 
     // corners
     ctx.beginPath();
-    ctx.arc(0, 0, _.cornerRadius / this.ratio, 0, Math.PI / 2);
+    ctx.arc(0, 0, _.CORNER_RADIUS / _.RATIO, 0, Math.PI / 2);
     ctx.stroke();
     ctx.beginPath();
-    ctx.arc(this.width, 0, _.cornerRadius / this.ratio, Math.PI / 2, Math.PI);
+    ctx.arc(this.width, 0, _.CORNER_RADIUS / _.RATIO, Math.PI / 2, Math.PI);
     ctx.stroke();
     ctx.beginPath();
-    ctx.arc(this.width, this.height, _.cornerRadius / this.ratio, Math.PI, -Math.PI);
+    ctx.arc(this.width, this.height, _.CORNER_RADIUS / _.RATIO, Math.PI, -Math.PI);
     ctx.stroke();
     ctx.beginPath();
-    ctx.arc(0, this.height, _.cornerRadius / this.ratio, -Math.PI, 0);
+    ctx.arc(0, this.height, _.CORNER_RADIUS / _.RATIO, -Math.PI, 0);
     ctx.stroke();
 
     // center line
@@ -49,70 +49,76 @@ export default class FootballField {
 
     // center circle
     ctx.beginPath();
-    ctx.arc(this.width / 2, this.height / 2, _.mainRadius / this.ratio, 0, 2 * Math.PI);
+    ctx.arc(this.width / 2, this.height / 2, _.MAIN_RADIUS / _.RATIO, 0, 2 * Math.PI);
     ctx.stroke();
 
     // left goal area
     ctx.beginPath();
-    ctx.moveTo(0, this.height / 2 - _.goalAreaLength / this.ratio / 2);
-    ctx.lineTo(_.goalAreaWidth / this.ratio, this.height / 2 - _.goalAreaLength / this.ratio / 2);
-    ctx.lineTo(_.goalAreaWidth / this.ratio, this.height / 2 + _.goalAreaLength / this.ratio / 2);
-    ctx.lineTo(0, this.height / 2 + _.goalAreaLength / this.ratio / 2);
+    ctx.moveTo(0, this.height / 2 - _.GOAL_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(_.GOAL_AREA_WIDTH / _.RATIO, this.height / 2 - _.GOAL_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(_.GOAL_AREA_WIDTH / _.RATIO, this.height / 2 + _.GOAL_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(0, this.height / 2 + _.GOAL_AREA_LENGTH / _.RATIO / 2);
     ctx.stroke();
 
     // right goal area
     ctx.beginPath();
-    ctx.moveTo(this.width, this.height / 2 - _.goalAreaLength / this.ratio / 2);
-    ctx.lineTo(this.width - _.goalAreaWidth / this.ratio, this.height / 2 - _.goalAreaLength / this.ratio / 2);
-    ctx.lineTo(this.width - _.goalAreaWidth / this.ratio, this.height / 2 + _.goalAreaLength / this.ratio / 2);
-    ctx.lineTo(this.width, this.height / 2 + _.goalAreaLength / this.ratio / 2);
+    ctx.moveTo(this.width, this.height / 2 - _.GOAL_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(this.width - _.GOAL_AREA_WIDTH / _.RATIO, this.height / 2 - _.GOAL_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(this.width - _.GOAL_AREA_WIDTH / _.RATIO, this.height / 2 + _.GOAL_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(this.width, this.height / 2 + _.GOAL_AREA_LENGTH / _.RATIO / 2);
     ctx.stroke();
 
     // left penalty area
     ctx.beginPath();
-    ctx.moveTo(0, this.height / 2 - _.penaltyAreaLength / this.ratio / 2);
-    ctx.lineTo(_.penaltyAreaWidth / this.ratio, this.height / 2 - _.penaltyAreaLength / this.ratio / 2);
-    ctx.lineTo(_.penaltyAreaWidth / this.ratio, this.height / 2 + _.penaltyAreaLength / this.ratio / 2);
-    ctx.lineTo(0, this.height / 2 + _.penaltyAreaLength / this.ratio / 2);
+    ctx.moveTo(0, this.height / 2 - _.PENALTY_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(_.PENALTY_AREA_WIDTH / _.RATIO, this.height / 2 - _.PENALTY_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(_.PENALTY_AREA_WIDTH / _.RATIO, this.height / 2 + _.PENALTY_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(0, this.height / 2 + _.PENALTY_AREA_LENGTH / _.RATIO / 2);
     ctx.stroke();
 
     // left penalty mark
     ctx.beginPath();
-    ctx.arc(_.penaltyMarkToGoalLine / this.ratio, this.height / 2, 2, 0, 2 * Math.PI);
+    ctx.arc(_.PENALTY_MARK_TO_GOAL_LINE / _.RATIO, this.height / 2, 2, 0, 2 * Math.PI);
     ctx.fill();
 
     // right penalty area
     ctx.beginPath();
-    ctx.moveTo(this.width, this.height / 2 - _.penaltyAreaLength / this.ratio / 2);
-    ctx.lineTo(this.width - _.penaltyAreaWidth / this.ratio, this.height / 2 - _.penaltyAreaLength / this.ratio / 2);
-    ctx.lineTo(this.width - _.penaltyAreaWidth / this.ratio, this.height / 2 + _.penaltyAreaLength / this.ratio / 2);
-    ctx.lineTo(this.width, this.height / 2 + _.penaltyAreaLength / this.ratio / 2);
+    ctx.moveTo(this.width, this.height / 2 - _.PENALTY_AREA_LENGTH / _.RATIO / 2);
+    ctx.lineTo(
+      this.width - _.PENALTY_AREA_WIDTH / _.RATIO,
+      this.height / 2 - _.PENALTY_AREA_LENGTH / _.RATIO / 2
+    );
+    ctx.lineTo(
+      this.width - _.PENALTY_AREA_WIDTH / _.RATIO,
+      this.height / 2 + _.PENALTY_AREA_LENGTH / _.RATIO / 2
+    );
+    ctx.lineTo(this.width, this.height / 2 + _.PENALTY_AREA_LENGTH / _.RATIO / 2);
     ctx.stroke();
 
     // right penalty mark
     ctx.beginPath();
-    ctx.arc(this.width - _.penaltyMarkToGoalLine / this.ratio, this.height / 2, 2, 0, 2 * Math.PI);
+    ctx.arc(this.width - _.PENALTY_MARK_TO_GOAL_LINE / _.RATIO, this.height / 2, 2, 0, 2 * Math.PI);
     ctx.fill();
 
     // left goal area arc
     ctx.beginPath();
     ctx.arc(
-      _.penaltyMarkToGoalLine / this.ratio,
+      _.PENALTY_MARK_TO_GOAL_LINE / _.RATIO,
       this.height / 2,
-      _.mainRadius / this.ratio,
-      -Math.acos((_.penaltyAreaWidth - _.penaltyMarkToGoalLine) / _.mainRadius),
-      Math.acos((_.penaltyAreaWidth - _.penaltyMarkToGoalLine) / _.mainRadius)
+      _.MAIN_RADIUS / _.RATIO,
+      -Math.acos((_.PENALTY_AREA_WIDTH - _.PENALTY_MARK_TO_GOAL_LINE) / _.MAIN_RADIUS),
+      Math.acos((_.PENALTY_AREA_WIDTH - _.PENALTY_MARK_TO_GOAL_LINE) / _.MAIN_RADIUS)
     );
     ctx.stroke();
 
     // right goal area arc
     ctx.beginPath();
     ctx.arc(
-      this.width - _.penaltyMarkToGoalLine / this.ratio,
+      this.width - _.PENALTY_MARK_TO_GOAL_LINE / _.RATIO,
       this.height / 2,
-      _.mainRadius / this.ratio,
-      Math.PI - Math.acos((_.penaltyAreaWidth - _.penaltyMarkToGoalLine) / _.mainRadius),
-      -Math.PI + Math.acos((_.penaltyAreaWidth - _.penaltyMarkToGoalLine) / _.mainRadius)
+      _.MAIN_RADIUS / _.RATIO,
+      Math.PI - Math.acos((_.PENALTY_AREA_WIDTH - _.PENALTY_MARK_TO_GOAL_LINE) / _.MAIN_RADIUS),
+      -Math.PI + Math.acos((_.PENALTY_AREA_WIDTH - _.PENALTY_MARK_TO_GOAL_LINE) / _.MAIN_RADIUS)
     );
     ctx.stroke();
   }

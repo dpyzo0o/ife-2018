@@ -1,11 +1,12 @@
- export const fieldDimensions = {
-  goalLength: 7.32,
-  goalWidth: 2.44,
-  goalAreaLength: 18.32,
-  goalAreaWidth: 5.5,
-  penaltyAreaLength: 40.32,
-  penaltyAreaWidth: 16.5,
-  cornerRadius: 1,
-  mainRadius: 9.15,
-  penaltyMarkToGoalLine: 11
+ export default {
+  GOAL_LENGTH: 7.32,
+  GOAL_WIDTH: 2.44,
+  GOAL_AREA_LENGTH: 18.32,
+  GOAL_AREA_WIDTH: 5.5,
+  PENALTY_AREA_LENGTH: 40.32,
+  PENALTY_AREA_WIDTH: 16.5,
+  CORNER_RADIUS: 1,
+  MAIN_RADIUS: 9.15,
+  PENALTY_MARK_TO_GOAL_LINE: 11,
+  RATIO: 1
 };
