@@ -1,4 +1,6 @@
  export default {
+  FIELD_LENGTH: 105,
+  FIELD_WIDTH: 68,
   GOAL_LENGTH: 7.32,
   GOAL_WIDTH: 2.44,
   GOAL_AREA_LENGTH: 18.32,

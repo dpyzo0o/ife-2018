@@ -4,6 +4,11 @@ function setAttributes(el, attrs) {
   }
 }
 
+function setStyles(el, styles) {
+  Object.assign(el.style, styles);
+}
+
 export default {
-  setAttributes
+  setAttributes,
+  setStyles
 }

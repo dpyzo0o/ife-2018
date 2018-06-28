@@ -3,14 +3,18 @@ import _ from './Constants';
 
 export default class FootballField {
   constructor(config) {
-    _.RATIO = Math.max(config.fieldWidth / config.containerHeight, config.fieldLength / config.containerWidth);
+    _.RATIO = Math.max(_.FIELD_WIDTH / config.containerHeight, _.FIELD_LENGTH / config.containerWidth);
     this.containerWidth = config.containerWidth;
     this.containerHeight = config.containerHeight;
-    this.width = Math.round(config.fieldLength / _.RATIO);
-    this.height = Math.round(config.fieldWidth / _.RATIO);
+    this.width = Math.round(_.FIELD_LENGTH / _.RATIO);
+    this.height = Math.round(_.FIELD_WIDTH / _.RATIO);
+
+    const playerWrapper = document.querySelector('.player-wrapper');
+    playerWrapper.style.width = `${this.width}px`;
+    playerWrapper.style.height = `${this.height}px`;
   }
 
-  init() {
+  render() {
     const container = document.getElementById('container');
     container.setAttribute('style', `width: ${this.containerWidth}px; height: ${this.containerHeight}px`);
 
