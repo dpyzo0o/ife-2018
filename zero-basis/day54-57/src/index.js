@@ -9,6 +9,16 @@ const field = Factory.getInstance(Factory.FOOTBALLFIELD, {
 
 field.render();
 
-const player1 = Factory.getInstance(Factory.PLAYER).init();
+const player1 = Factory.getInstance(Factory.PLAYER, {
+  x: 10,
+  y: 10,
+  vNum: 90
+}).init();
+const player2 = Factory.getInstance(Factory.PLAYER, {
+  x: 10,
+  y: 20,
+  vNum: 80
+}).init();
 
-player1.runTo(10, 10);
+player1.runTo(100, 10);
+player2.runTo(100, 20);
